@@ -1,7 +1,6 @@
-//getProjects.js
-
-function GetData(page){
-	
+//overlay.js
+function overlayOn(info){
+	document.getElementById("overlay").style.display = "block";
 	var xhttp = new XMLHttpRequest();	
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){			
@@ -34,14 +33,14 @@ function GetData(page){
 					htmlText =htmlText+'</div>';
 					htmlText =htmlText+'</div>';
 			}
-			document.getElementById("projects").innerHTML = htmlText;	
-		}
+			document.getElementById("projectsLong").innerHTML = htmlText;	
+		}	
 	}
-	if(page == "home"){
-		xhttp.open("GET", "/getCurrent", false);
-				
-	}else{
-		xhttp.open("GET", "/getProjects", false);		
-	}
-	xhttp.send();
+	xhttp.open("POST", "/getMoreInfo", false);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("title="+info);
+}
+function overlayOff() {
+	document.getElementById("projectsLong").innerHTML = "";
+	document.getElementById("overlay").style.display = "none";
 }

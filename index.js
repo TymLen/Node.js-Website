@@ -12,5 +12,6 @@ handle["/projects"] = requestHandlers.reqProjects;
 handle["/getProjects"] = requestHandlers.getProjects;
 handle["/getCurrent"] = requestHandlers.getCurrent;
 handle["/about"] = requestHandlers.reqAbout;
+handle["/getMoreInfo"] = requestHandlers.getMoreInfo;
 
 server.startServer(router.route, handle);

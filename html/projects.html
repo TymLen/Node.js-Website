@@ -9,11 +9,8 @@
 		<title>ProTyme: Projects</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="/getData.js"></script>
-		<script>
-		$(document).ready(function(){
-			GetData("project");
-		});
-	</script>
+		<script src="/JQPro.js"></script>
+		<script src="/overlay.js"></script>
 	</head>
 	<body>
 		<div id ="navbar" class="sticky">
@@ -24,15 +21,14 @@
 		</div>			
 		<article>
 			<p><h3>Below are details of my previous and current IT Projects.</h3></p>
+			<p>Click on the pictures to see more info and links to media if available.</p>
+			<p>Projects are versioned using Github but not publically available currently.</p>	
 			<div id="projects"></div>
 		</article>
-			
-		
 		<footer>
-			<p>
-				
+			<p>			
 			</p>
 		</footer>
-		</div>
+		<div id="overlay" onclick="overlayOff()"><div id="projectsLong"></div></div>
 	</body>
 </html>

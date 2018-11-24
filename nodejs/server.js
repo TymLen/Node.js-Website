@@ -9,7 +9,23 @@ function startServer(route, handle)
 	function onRequest(req, res)
 	{
 		var pathname = url.parse(req.url).pathname;
-		route(pathname, handle, req, res);
+		var postData ='';
+		if(req.url.indexOf('/getMoreInfo') !=-1)
+			{
+				console.log("gettingMore");
+				req.addListener('data', function (data){
+					postData += data;
+				});
+				
+				req.addListener('end', function(){
+					console.log(postData);
+					route(pathname, handle, req, res, postData);
+				});
+				
+			}else{
+				route(pathname, handle, req, res);
+			}
+		
 	}
 	http.createServer(onRequest).listen(8080);
 }

@@ -3,11 +3,11 @@
 
 var fs = require("fs");
 
-function route(pathname, handle, req, res)
+function route(pathname, handle, req, res, postData)
 {
 	if(typeof handle[pathname] === 'function')
 	{
-		handle[pathname](req, res);
+		handle[pathname](req, res, postData);
 	}
 	else if(req.url.indexOf('stylesheet.css') !=-1)
 	{
