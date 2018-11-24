@@ -1,0 +1,86 @@
+
+body {
+	color: white;
+	background-image: url("diagonal-squares.png");
+}
+header{
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+footer{
+	text-align: left;
+}
+#navbar {
+	background-color: black;
+	background-image: url("ep_naturalblack.png");
+	color: white;
+	width: 100%;
+	display: block;
+	padding-bottom: 30px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+}
+#navbar a{
+	
+	color: white;
+	padding: 14px;
+	border-style: solid;
+}
+#navbar a:hover{
+	background-color: navy;
+}
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+a:hover{
+	background-color: black;
+}
+
+
+section {
+	background-color: #ffffff;
+	position: relative;
+	padding: 10px 40px 10px 50px;
+}
+
+article {
+	font-size: 16px
+	position: relative;
+	font-family: 'Montserrat', sans-serif;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 0px 10px;
+	padding-top: 200px;
+}
+.banner {
+	margin-left: 160px;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.contentBox {
+	border-style:solid;
+	min-height: 200px;
+	padding: 16px 8px 8px 16px;
+}
+td{
+	vertical-align: top;
+	padding: 10px;
+}
+.portrait{
+	max-height: 160px;
+	max-width: 160px;
+	border-radius: 50%;
+	padding: 10px;
+}
+.projIcon{
+	padding: 10px;
+	border: 1px solid #ddd;
+	max-height: 160px;
+	max-width: 160px;
+}
