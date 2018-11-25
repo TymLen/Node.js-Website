@@ -1,0 +1,28 @@
+{
+  "name": "protymeweb",
+  "version": "1.0.0",
+  "description": "Personal website for Tym",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+	"start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TymLen/Website.git"
+  },
+  "keywords": [
+    "protyme",
+    "website"
+  ],
+  "author": "Tym",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TymLen/Website/issues"
+  },
+  "homepage": "https://github.com/TymLen/Website#readme"
+}

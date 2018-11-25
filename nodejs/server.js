@@ -23,13 +23,13 @@ function startServer(route, handle)
 				});
 				
 			}else{
-				route(pathname, handle, req, res);
+				route(pathname, handle, req, res, postData);
 			}
 		
 	}
-	http.createServer(onRequest).listen(8080);
+	http.createServer(onRequest).listen(process.env.PORT);
 }
-console.log('Server running on port 8080');
+console.log('Server running on port process.env.PORT/');
 console.log('Process ID: ', process.pid);
 
 exports.startServer = startServer;

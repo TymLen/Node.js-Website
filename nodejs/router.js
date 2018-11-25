@@ -11,7 +11,7 @@ function route(pathname, handle, req, res, postData)
 	}
 	else if(req.url.indexOf('stylesheet.css') !=-1)
 	{
-		fs.readFile('../Website/css/stylesheet.css', function read(err, data)
+		fs.readFile('./css/stylesheet.css', function read(err, data)
 		{
 			if(err){
 				console.log(err);
@@ -23,7 +23,7 @@ function route(pathname, handle, req, res, postData)
 	else if(req.url.indexOf('.png') !=-1){
 		var fileName = req.url;
 		fileName = fileName.split('\\').pop().split('/').pop();
-		fs.readFile('../Website/images/'+fileName, function read(err, data){
+		fs.readFile('./images/'+fileName, function read(err, data){
 			if(err){
 				console.log(err);
 			}
@@ -34,7 +34,7 @@ function route(pathname, handle, req, res, postData)
 	else if(req.url.indexOf('.js') !=-1){
 		var fileName = req.url;
 		fileName = fileName.split('\\').pop().split('/').pop();
-		fs.readFile('../Website/js/'+fileName, function read(err, data){
+		fs.readFile('./js/'+fileName, function read(err, data){
 			if(err){
 				console.log(err);
 			}

@@ -7,23 +7,23 @@ var mysql = require('mysql');
 
 function reqIndex(req, res){
 	res.writeHead(200, {"Content-Type": "text/html"});
-	fs.createReadStream("../Website/html/index.html").pipe(res);
+	fs.createReadStream("./html/index.html").pipe(res);
 }
 function reqProjects(req, res){
 	res.writeHead(200, {"Content-Type": "text/html"});
-	fs.createReadStream("../Website/html/projects.html").pipe(res);
+	fs.createReadStream("./html/projects.html").pipe(res);
 }
 function reqAbout(req, res){
 	res.writeHead(200, {"Content-Type": "text/html"});
-	fs.createReadStream("../Website/html/about.html").pipe(res);
+	fs.createReadStream("./html/about.html").pipe(res);
 }
 function getProjects(req, res){
 	var con = mysql.createConnection({
-		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
-		port: "3306",
-		user: "webAccess",
-		password: "<W$gns;?,T7R",
-		database: "provik"
+		host: process.env.RDS_HOSTNAME,
+		port: process.env.RDS_PORT,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		database: process.env.RDS_DB_NAME
 	});
 	
 	con.connect(function(err){
@@ -47,11 +47,11 @@ function getProjects(req, res){
 }
 function getCurrent(req, res){
 	var con = mysql.createConnection({
-		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
-		port: "3306",
-		user: "webAccess",
-		password: "<W$gns;?,T7R",
-		database: "provik"
+		host: process.env.RDS_HOSTNAME,
+		port: process.env.RDS_PORT,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		database: process.env.RDS_DB_NAME
 	});
 	
 	con.connect(function(err){
@@ -79,11 +79,11 @@ function getMoreInfo(req, res, postData){
 	console.log(parseData.title);
 	
 	var con = mysql.createConnection({
-		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
-		port: "3306",
-		user: "webAccess",
-		password: "<W$gns;?,T7R",
-		database: "provik"
+		host: process.env.RDS_HOSTNAME,
+		port: process.env.RDS_PORT,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		database: process.env.RDS_DB_NAME
 	});
 	
 	con.connect(function(err){
