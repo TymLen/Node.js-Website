@@ -19,15 +19,16 @@ function reqAbout(req, res){
 }
 function getProjects(req, res){
 	var con = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "lunWP=H8;ke7",
-	database: "Provik"
+		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
+		port: "3306",
+		user: "webAccess",
+		password: "<W$gns;?,T7R",
+		database: "provik"
 	});
 	
 	con.connect(function(err){
 		if(err) throw err;
-		con.query("SELECT * FROM PROJECTS ORDER BY id DESC", function(err, result){
+		con.query("SELECT * FROM projects ORDER BY id DESC", function(err, result){
 			if(err) throw err;
 			var project = [];
 			for(var i = 0; i < result.length; i++){
@@ -46,15 +47,16 @@ function getProjects(req, res){
 }
 function getCurrent(req, res){
 	var con = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "lunWP=H8;ke7",
-	database: "Provik"
+		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
+		port: "3306",
+		user: "webAccess",
+		password: "<W$gns;?,T7R",
+		database: "provik"
 	});
 	
 	con.connect(function(err){
 		if(err) throw err;
-		con.query("SELECT * FROM PROJECTS WHERE complete='Ongoing'", function(err, result){
+		con.query("SELECT * FROM projects WHERE complete='Ongoing'", function(err, result){
 			if(err) throw err;
 			var project = [];
 			for(var i = 0; i < result.length; i++){
@@ -77,15 +79,16 @@ function getMoreInfo(req, res, postData){
 	console.log(parseData.title);
 	
 	var con = mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "lunWP=H8;ke7",
-		database: "Provik"
+		host: "protyme.cpv1skxlccce.ap-southeast-2.rds.amazonaws.com",
+		port: "3306",
+		user: "webAccess",
+		password: "<W$gns;?,T7R",
+		database: "provik"
 	});
 	
 	con.connect(function(err){
 		if(err) throw err;
-		con.query("SELECT * FROM PROJECTS LEFT JOIN PROJECTSLONG ON PROJECTS.id=PROJECTSLONG.proID WHERE title='"+parseData.title+"'", function(err, result){
+		con.query("SELECT * FROM projects LEFT JOIN projectslong ON projects.id=projectslong.proID WHERE title='"+parseData.title+"'", function(err, result){
 			if(err) throw err;
 			var project = [];
 			for(var i = 0; i < result.length; i++){
@@ -101,7 +104,6 @@ function getMoreInfo(req, res, postData){
 				
 			}		
 			con.end();
-			console.log(result);
 			res.writeHead(200, {"Content-Type": "text/plain"});
 			res.end(project.toString());			
 		});
