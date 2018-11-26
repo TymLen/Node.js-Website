@@ -17,6 +17,15 @@ function reqAbout(req, res){
 	res.writeHead(200, {"Content-Type": "text/html"});
 	fs.createReadStream("./html/about.html").pipe(res);
 }
+function reqNav(req, res){
+	res.writeHead(200, {"Content-Type": "text/html"});
+	fs.createReadStream("./html/navbar.html").pipe(res);
+}
+function reqFoot(req, res){
+	res.writeHead(200, {"Content-Type": "text/html"});
+	fs.createReadStream("./html/footer.html").pipe(res);
+}
+
 function getProjects(req, res){
 	var con = mysql.createConnection({
 		host: process.env.RDS_HOSTNAME,
@@ -113,6 +122,8 @@ function getMoreInfo(req, res, postData){
 exports.reqIndex = reqIndex;
 exports.reqProjects = reqProjects;
 exports.reqAbout = reqAbout;
+exports.reqNav = reqNav;
+exports.reqFoot = reqFoot;
 exports.getProjects = getProjects;
 exports.getCurrent = getCurrent;
 exports.getMoreInfo = getMoreInfo;

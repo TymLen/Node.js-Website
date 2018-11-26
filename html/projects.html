@@ -11,24 +11,20 @@
 		<script src="/getData.js"></script>
 		<script src="/JQPro.js"></script>
 		<script src="/overlay.js"></script>
+		<script src="/JQHead&Feet.js"></script>
 	</head>
 	<body>
-		<div id ="navbar" class="sticky">
-			<header><h1>All Projects</h1><br></header>
-			<a href="/index">Home</a>
-			<a href="/about">About</a>
-			<a href="/projects">Projects</a>
-		</div>			
+		<header class="sticky">
+			<h1>My Projects</h1><br>
+			<div id ="navbar" ></div>
+		</header>	
 		<article>
-			<p><h3>Below are details of my previous and current IT Projects.</h3></p>
-			<p>Click on the pictures to see more info and links to media if available.</p>
-			<p>Projects are versioned using Github but not publically available currently.</p>	
+			<p id="indexHead">Below are details of my previous and current IT Projects.</p>
+			<p>Click on the pictures to see more info and links to media if available.<br>
+			Projects are versioned using <a href="https://github.com/TymLen"><img border="0" alt="GitHub" src="./images/GitHub_Logo_White.png" width="90" height="30"></a> but may not be public until the files are reviewed for security.</p>	
 			<div id="projects"></div>
 		</article>
-		<footer>
-			<p>			
-			</p>
-		</footer>
+		<footer></footer>
 		<div id="overlay" onclick="overlayOff()"><div id="projectsLong"></div></div>
 	</body>
 </html>

@@ -4,11 +4,12 @@
   "description": "Personal website for Tym",
   "main": "index.js",
   "dependencies": {
+    "dotenv": "^6.1.0",
     "mysql": "^2.16.0"
   },
   "devDependencies": {},
   "scripts": {
-	"start": "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
