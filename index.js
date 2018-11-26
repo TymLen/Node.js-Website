@@ -1,6 +1,5 @@
 //index.js
 "use strict";
-require('dotenv').config();
 
 var server = require("./nodejs/server");
 var router = require("./nodejs/router");
@@ -16,5 +15,6 @@ handle["/about"] = requestHandlers.reqAbout;
 handle["/getMoreInfo"] = requestHandlers.getMoreInfo;
 handle["/navbar"] = requestHandlers.reqNav;
 handle["/footer"] = requestHandlers.reqFoot;
+handle["/404error"] = requestHandlers.req404Error;
 
 server.startServer(router.route, handle);

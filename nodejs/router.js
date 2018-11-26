@@ -44,7 +44,7 @@ function route(pathname, handle, req, res, postData)
 	}
 	else{
 		console.log("No request handler found for: "+pathname);
-		res.writeHead(200, {'Content-Type': 'text/html'});
+		handle["/404error"](req, res, postData);
 	}
 }
 exports.route = route;
