@@ -118,7 +118,7 @@ function getMoreInfo(req, res, postData){
 			res.end(null);
 			console.log(err);
 		}
-		con.query("SELECT * FROM projects LEFT JOIN projectslong ON projects.id=projectslong.proID WHERE title='"+parseData.title+"'", function(err, result){
+		con.query("SELECT * FROM projects LEFT JOIN projectslong ON projects.id=projectslong.proID LEFT JOIN skills ON projects.id = skills.proid WHERE title='"+parseData.title+"'", function(err, result){
 			if(err){
 				res.writeHead(200, {"Content-Type": "text/plain"});
 				res.end(null);
@@ -135,6 +135,8 @@ function getMoreInfo(req, res, postData){
 				}	
 				project.push(result[i].ProjectTime+";");
 				project.push(result[i].ProjectPic+";");
+				project.push(result[i].skills+";");
+				console.log(result);
 				
 			}		
 			con.end();

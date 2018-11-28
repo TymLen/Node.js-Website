@@ -8,7 +8,7 @@ function overlayOn(info){
 			var splitObj = resObj.split(';,');
 			var htmlText ='';
 			var i;
-			for(i = 0; i < splitObj.length; i = i+5){
+			for(i = 0; i < splitObj.length; i = i+6){
 				htmlText = htmlText+'<div class="contentBox">';
 				splitObj[i+4] = splitObj[i+4].replace(';','');
 				htmlText = htmlText+'<img src='+splitObj[i+4]+' alt="'+splitObj[i]+'" class="projIcon" align="left" onclick="overlayOn(\''+splitObj[i]+'\')">';
@@ -19,11 +19,15 @@ function overlayOn(info){
 						htmlText = htmlText+'</tr>';
 						htmlText = htmlText+'<tr>';
 							htmlText = htmlText+'<td><b>Status:</b></td>';
-							htmlText = htmlText+'<td>'+splitObj[i+1]+'</td>'
+							htmlText = htmlText+'<td>'+splitObj[i+1]+'</td>';
 						htmlText = htmlText+'</tr>';
 						htmlText = htmlText+'<tr>';
 							htmlText = htmlText+'<td><b>Date:</b></td>';
 							htmlText = htmlText+'<td>'+splitObj[i+3]+'</td>';
+						htmlText = htmlText+'</tr>';
+						htmlText = htmlText+'<tr>';
+							htmlText = htmlText+'<td><b>Skill Tags:</b></td>';
+							htmlText = htmlText+'<td>'+splitObj[i+5]+'</td>';
 						htmlText = htmlText+'</tr>';
 						htmlText = htmlText+'<tr>';
 							htmlText = htmlText+'<td><b>Description</b></td>';
