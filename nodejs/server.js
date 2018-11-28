@@ -12,13 +12,11 @@ function startServer(route, handle)
 		var postData ='';
 		if(req.url.indexOf('/getMoreInfo') !=-1)
 			{
-				console.log("gettingMore");
 				req.addListener('data', function (data){
 					postData += data;
 				});
 				
 				req.addListener('end', function(){
-					console.log(postData);
 					route(pathname, handle, req, res, postData);
 				});
 				
@@ -29,7 +27,6 @@ function startServer(route, handle)
 	}
 	http.createServer(onRequest).listen(process.env.PORT);
 }
-console.log('Server running on port '+process.env.PORT);
-console.log('Process ID: ', process.pid);
+console.log('Server running on port '+process.env.PORT+ ' | Process ID: ' +process.pid);
 
 exports.startServer = startServer;

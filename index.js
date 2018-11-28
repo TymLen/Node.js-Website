@@ -16,5 +16,6 @@ handle["/getMoreInfo"] = requestHandlers.getMoreInfo;
 handle["/navbar"] = requestHandlers.reqNav;
 handle["/footer"] = requestHandlers.reqFoot;
 handle["/404error"] = requestHandlers.req404Error;
+handle["/reqSkills"] = requestHandlers.reqSkills;
 
 server.startServer(router.route, handle);

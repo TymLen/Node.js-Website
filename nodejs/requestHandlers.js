@@ -126,24 +126,67 @@ function getMoreInfo(req, res, postData){
 			}else{
 				var project = [];
 				for(var i = 0; i < result.length; i++){
-				project.push(result[i].title+";");
-				project.push(result[i].complete+";");
-				if(result[i].allInfo!= null){
-					project.push(result[i].allInfo+";");
-				}else{
-					project.push(result[i].info+";");
-				}	
-				project.push(result[i].ProjectTime+";");
-				project.push(result[i].ProjectPic+";");
-				project.push(result[i].skills+";");
+					project.push(result[i].title+";");
+					project.push(result[i].complete+";");
+					if(result[i].allInfo!= null){
+						project.push(result[i].allInfo+";");
+					}else{
+						project.push(result[i].info+";");
+					}	
+					project.push(result[i].ProjectTime+";");
+					project.push(result[i].ProjectPic+";");
+					project.push(result[i].skills+";");			
+				}		
+				con.end();
+				res.writeHead(200, {"Content-Type": "text/plain"});
+				res.end(project.toString());
+			} 				
+		});
+	});	
+}
+
+function reqSkills(req, res){
+	console.log("Skils");
+	var con = mysql.createConnection({
+		host: process.env.RDS_HOSTNAME,
+		port: process.env.RDS_PORT,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		database: process.env.RDS_DB_NAME
+	});
+	con.connect(function(err){
+		if(err){
+			res.writeHead(200, {"Content-Type": "text/plain"});
+			res.end(null);
+			console.log(err);
+		} 
+		con.query("SELECT * FROM skills", function(err, result){
+			if(err){
+				res.writeHead(200, {"Content-Type": "text/plain"});
+				res.end(null);
+				console.log(err);
+			}else{
+				var skillTags = {};
 				console.log(result);
-				
-			}		
+				for(var i = 0; i < result.length; i++){
+					
+					var resultString = result[i].skills.toString();
+					console.log(resultString);
+					var splitObj = resultString.split(',');
+					for(var j = 0; j < splitObj.length; j++){
+						if(skillTags[splitObj[j]] == null){
+							skillTags[splitObj[j]] = 1;
+						}else{
+							skillTags[splitObj[j]]++;
+						}
+					}
+					
+				}	
+			console.log(JSON.stringify(skillTags));
 			con.end();
 			res.writeHead(200, {"Content-Type": "text/plain"});
-			res.end(project.toString());
-			} 
-						
+			res.end(JSON.stringify(skillTags));
+			} 					
 		});
 	});	
 }
@@ -153,6 +196,7 @@ exports.reqProjects = reqProjects;
 exports.reqAbout = reqAbout;
 exports.reqNav = reqNav;
 exports.reqFoot = reqFoot;
+exports.reqSkills = reqSkills;
 exports.req404Error = req404Error;
 exports.getProjects = getProjects;
 exports.getCurrent = getCurrent;
