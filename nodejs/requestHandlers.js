@@ -32,11 +32,11 @@ function req404Error(req, res){
 
 function getProjects(req, res){
 	var con = mysql.createConnection({
-		host: process.env.RDS_HOSTNAME,
-		port: process.env.RDS_PORT,
-		user: process.env.RDS_USERNAME,
-		password: process.env.RDS_PASSWORD,
-		database: process.env.RDS_DB_NAME
+		host: 'sql12.freemysqlhosting.net',
+		port: '3306',
+		user: 'sql12267999',
+		password: 'FgSY66flID',
+		database: 'sql12267999'
 	});
 	
 	con.connect(function(err){
@@ -65,11 +65,11 @@ function getProjects(req, res){
 }
 function getCurrent(req, res){
 	var con = mysql.createConnection({
-		host: process.env.RDS_HOSTNAME,
-		port: process.env.RDS_PORT,
-		user: process.env.RDS_USERNAME,
-		password: process.env.RDS_PASSWORD,
-		database: process.env.RDS_DB_NAME
+		host: 'sql12.freemysqlhosting.net',
+		port: '3306',
+		user: 'sql12267999',
+		password: 'FgSY66flID',
+		database: 'sql12267999'
 	});
 	
 	con.connect(function(err){
@@ -105,11 +105,11 @@ function getMoreInfo(req, res, postData){
 	var parseData = qs.parse(postData);
 	
 	var con = mysql.createConnection({
-		host: process.env.RDS_HOSTNAME,
-		port: process.env.RDS_PORT,
-		user: process.env.RDS_USERNAME,
-		password: process.env.RDS_PASSWORD,
-		database: process.env.RDS_DB_NAME
+		host: 'sql12.freemysqlhosting.net',
+		port: '3306',
+		user: 'sql12267999',
+		password: 'FgSY66flID',
+		database: 'sql12267999'
 	});
 	
 	con.connect(function(err){
@@ -148,11 +148,11 @@ function getMoreInfo(req, res, postData){
 function reqSkills(req, res){
 	console.log("Skils");
 	var con = mysql.createConnection({
-		host: process.env.RDS_HOSTNAME,
-		port: process.env.RDS_PORT,
-		user: process.env.RDS_USERNAME,
-		password: process.env.RDS_PASSWORD,
-		database: process.env.RDS_DB_NAME
+		host: 'sql12.freemysqlhosting.net',
+		port: '3306',
+		user: 'sql12267999',
+		password: 'FgSY66flID',
+		database: 'sql12267999'
 	});
 	con.connect(function(err){
 		if(err){
@@ -182,7 +182,6 @@ function reqSkills(req, res){
 					}
 					
 				}	
-			console.log(JSON.stringify(skillTags));
 			con.end();
 			res.writeHead(200, {"Content-Type": "text/plain"});
 			res.end(JSON.stringify(skillTags));

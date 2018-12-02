@@ -25,8 +25,8 @@ function startServer(route, handle)
 			}
 		
 	}
-	http.createServer(onRequest).listen(process.env.PORT);
+	http.createServer(onRequest).listen(80);
 }
-console.log('Server running on port '+process.env.PORT+ ' | Process ID: ' +process.pid);
+console.log('Server running on port ' +80+ ' | Process ID: ' +process.pid);
 
 exports.startServer = startServer;
