@@ -44,6 +44,7 @@ function overlayOn(info){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("title="+info);
 }
+
 function overlayOff() {
 	document.getElementById("projectsLong").innerHTML = "";
 	document.getElementById("overlay").style.display = "none";

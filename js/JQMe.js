@@ -1,4 +1,4 @@
-//JQPro.js
+//JQMe.js
 
 $(document).ready(function(){
 	GetSkills();

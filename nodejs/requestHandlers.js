@@ -5,6 +5,8 @@ var fs = require("fs");
 var qs = require('querystring');
 var mysql = require('mysql');
 
+
+
 function reqIndex(req, res){
 	res.writeHead(200, {"Content-Type": "text/html"});
 	fs.createReadStream("./html/index.html").pipe(res);
@@ -103,6 +105,7 @@ function getCurrent(req, res){
 
 function getMoreInfo(req, res, postData){
 	var parseData = qs.parse(postData);
+	console.log("getmoreCalled " +parseData.title);
 	
 	var con = mysql.createConnection({
 		host: 'sql12.freemysqlhosting.net',
@@ -124,6 +127,7 @@ function getMoreInfo(req, res, postData){
 				res.end(null);
 				console.log(err);
 			}else{
+				console.log(result);
 				var project = [];
 				for(var i = 0; i < result.length; i++){
 					project.push(result[i].title+";");
@@ -160,7 +164,7 @@ function reqSkills(req, res){
 			res.end(null);
 			console.log(err);
 		} 
-		con.query("SELECT * FROM skills", function(err, result){
+		con.query("SELECT * FROM skills LEFT JOIN projects ON skills.proid = projects.id", function(err, result){
 			if(err){
 				res.writeHead(200, {"Content-Type": "text/plain"});
 				res.end(null);
@@ -175,13 +179,14 @@ function reqSkills(req, res){
 					var splitObj = resultString.split(',');
 					for(var j = 0; j < splitObj.length; j++){
 						if(skillTags[splitObj[j]] == null){
-							skillTags[splitObj[j]] = 1;
+							skillTags[splitObj[j]] = {number: 1, title: result[i].title};
 						}else{
-							skillTags[splitObj[j]]++;
+							skillTags[splitObj[j]].number = skillTags[splitObj[j]].number +1;
+							skillTags[splitObj[j]].title = skillTags[splitObj[j]].title+","+ result[i].title;
 						}
-					}
-					
+					}			
 				}	
+			console.log(JSON.stringify(skillTags));
 			con.end();
 			res.writeHead(200, {"Content-Type": "text/plain"});
 			res.end(JSON.stringify(skillTags));

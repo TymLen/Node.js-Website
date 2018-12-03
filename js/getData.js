@@ -59,7 +59,32 @@ function GetSkills(){
 		if(this.readyState == 4 && this.status == 200){		
 			var htmlText ='';
 			if(this.responseText != null){
-				var resObj = this.responseText;
+				var resText = JSON.parse(this.responseText);
+				var resKeys = Object.keys(resText);
+				htmlText = htmlText+'<div class="contentBox">';
+					htmlText = htmlText+'<div class="projectDesc"><table>';
+						htmlText = htmlText+'<tr>';
+							htmlText = htmlText+'<td><b>Skill Tag:</b></td>';
+							htmlText = htmlText+'<td><b>Number of Projects</b></td>';
+							htmlText = htmlText+'<td><b>Projects</b></td>';
+						htmlText = htmlText+'</tr>';
+					for(var i = 0; i < resKeys.length; i++){
+						var skillKey = resText[resKeys[i]];
+						htmlText = htmlText+'<tr>';
+							htmlText = htmlText+'<td>'+resKeys[i]+'</td>';
+							htmlText = htmlText+'<td>'+resText[resKeys[i]].number+'</td>';
+							var splitTitle = resText[resKeys[i]].title.split(',');
+							htmlText = htmlText+'<td>';
+								for(var j = 0; j < splitTitle.length; j++){
+									htmlText= htmlText+'<button type="button" onclick="overlayOn(\''+splitTitle[j]+'\')">'+splitTitle[j]+'</button>';
+								}
+							htmlText = htmlText+'</td>';
+						htmlText = htmlText+'</tr>';
+					}
+					htmlText = htmlText+'</table>';
+					htmlText =htmlText+'</div>';
+				htmlText =htmlText+'</div>';
+				/*var resObj = this.responseText;
 				var splitObj = resObj.split('"');
 				splitObj.shift();
 				htmlText = htmlText+'<div class="contentBox">';
@@ -82,7 +107,7 @@ function GetSkills(){
 				htmlText =htmlText+'</div>';
 				
 				
-				document.getElementById("skillBox").innerHTML = htmlText;	
+				*/document.getElementById("skillBox").innerHTML = htmlText;	
 			}else{
 				htmlText = "Database error. Please try again later";
 				document.getElementById("skillBox").innerHTML = htmlText;
