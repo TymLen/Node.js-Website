@@ -105,7 +105,6 @@ function getCurrent(req, res){
 
 function getMoreInfo(req, res, postData){
 	var parseData = qs.parse(postData);
-	console.log("getmoreCalled " +parseData.title);
 	
 	var con = mysql.createConnection({
 		host: 'sql12.freemysqlhosting.net',
@@ -127,7 +126,6 @@ function getMoreInfo(req, res, postData){
 				res.end(null);
 				console.log(err);
 			}else{
-				console.log(result);
 				var project = [];
 				for(var i = 0; i < result.length; i++){
 					project.push(result[i].title+";");
