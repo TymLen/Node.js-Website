@@ -150,7 +150,7 @@ function getMoreInfo(req, res, postData){
 }
 
 function reqSkills(req, res){
-	console.log("Skils");
+	mysql://sql12267999:FgSY66flID@sql12.freemysqlhosting.net/sql12267999?reconnect=true
 	var con = mysql.createConnection({
 		host: 'sql12.freemysqlhosting.net',
 		port: '3306',
