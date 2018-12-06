@@ -3,6 +3,7 @@
 
 var http = require('http');
 var url = require('url');
+var port = process.env.PORT || 80;
 
 function startServer(route, handle)
 {
@@ -27,6 +28,6 @@ function startServer(route, handle)
 	}
 	http.createServer(onRequest).listen(80);
 }
-console.log('Server running on port 80 | Process ID: ' +process.pid);
+console.log('Server running on port '+port+' | Process ID: ' +process.pid);
 
 exports.startServer = startServer;
