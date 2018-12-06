@@ -3,7 +3,7 @@
 
 var http = require('http');
 var url = require('url');
-var port = process.env.PORT;
+var port = process.env.PORT || 80;
 
 function startServer(route, handle)
 {
@@ -26,7 +26,7 @@ function startServer(route, handle)
 			}
 		
 	}
-	http.createServer(onRequest).listen(80);
+	http.createServer(onRequest).listen(port);
 }
 console.log('Server running on port '+port+' | Process ID: ' +process.pid);
 
