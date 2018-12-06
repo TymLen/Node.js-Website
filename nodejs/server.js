@@ -3,7 +3,7 @@
 
 var http = require('http');
 var url = require('url');
-var port = process.env.PORT || 80;
+var port = process.env.PORT;
 
 function startServer(route, handle)
 {
