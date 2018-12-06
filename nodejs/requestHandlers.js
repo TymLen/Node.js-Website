@@ -148,7 +148,6 @@ function getMoreInfo(req, res, postData){
 }
 
 function reqSkills(req, res){
-	mysql://sql12267999:FgSY66flID@sql12.freemysqlhosting.net/sql12267999?reconnect=true
 	var con = mysql.createConnection({
 		host: 'sql12.freemysqlhosting.net',
 		port: '3306',
@@ -169,11 +168,8 @@ function reqSkills(req, res){
 				console.log(err);
 			}else{
 				var skillTags = {};
-				console.log(result);
-				for(var i = 0; i < result.length; i++){
-					
+				for(var i = 0; i < result.length; i++){				
 					var resultString = result[i].skills.toString();
-					console.log(resultString);
 					var splitObj = resultString.split(',');
 					for(var j = 0; j < splitObj.length; j++){
 						if(skillTags[splitObj[j]] == null){
